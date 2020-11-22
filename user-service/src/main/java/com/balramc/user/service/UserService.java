@@ -36,7 +36,7 @@ private static final Logger log = LoggerFactory.getLogger(UserService.class);
 		if(userOptional.isPresent()) {
 			User user = userOptional.get();
 			log.info("User is there");
-			Department department= restTemplate.getForObject("http://localhost:9000/departments/"+user.getId(), Department.class);
+			Department department= restTemplate.getForObject("http://DEPARTMENT-SERVICE/departments/"+user.getDepartmentId(), Department.class);
 			log.info(department.toString());
 			responseTemplateVO.setUser(user);
 			responseTemplateVO.setDepartment(department);
