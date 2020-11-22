@@ -6,9 +6,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import com.balramc.user.entity.User;
 import com.balramc.user.repo.UserRepo;
+import com.balramc.user.vo.Department;
 import com.balramc.user.vo.ResponseTemplateVO;
 
 /**
@@ -17,10 +19,11 @@ import com.balramc.user.vo.ResponseTemplateVO;
  */
 @Service
 public class UserService {
-
+	
 private static final Logger log = LoggerFactory.getLogger(UserService.class);
 
 	@Autowired UserRepo userRepo;
+	@Autowired RestTemplate restTemplate;
 	
 	public User saveUser(User user) {
 		log.info("User is saving");
@@ -28,13 +31,17 @@ private static final Logger log = LoggerFactory.getLogger(UserService.class);
 	}
 
 	public ResponseTemplateVO getUserWithDepartment(Long userId) {
-		Optional<User> findById = userRepo.findById(userId);
-		if(findById.isPresent()) {
+		ResponseTemplateVO responseTemplateVO = new ResponseTemplateVO();
+		Optional<User> userOptional = userRepo.findById(userId);
+		if(userOptional.isPresent()) {
+			User user = userOptional.get();
 			log.info("User is there");
+			Department department= restTemplate.getForObject("http://localhost:9000/departments/"+user.getId(), Department.class);
+			log.info(department.toString());
+			responseTemplateVO.setUser(user);
+			responseTemplateVO.setDepartment(department);
 		}
-		
-		ResponseTemplateVO vo = new ResponseTemplateVO();
-		return vo;
+		return responseTemplateVO;
 	}
 	
 }

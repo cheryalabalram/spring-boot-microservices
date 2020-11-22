@@ -18,7 +18,6 @@ public class Department {
 	@Id @GeneratedValue( strategy = GenerationType.AUTO) private Long id;
 	@Column private String name;
 	@Column private String location;
-	@Column private Long departmentId;
 	
 	public Long getId() {
 		return id;
@@ -38,16 +37,9 @@ public class Department {
 	public void setLocation(String location) {
 		this.location = location;
 	}
-	public Long getDepartmentId() {
-		return departmentId;
-	}
-	public void setDepartmentId(Long departmentId) {
-		this.departmentId = departmentId;
-	}
 	
 	@Override
 	public String toString() {
-		return "Department [id=" + id + ", name=" + name + ", location=" + location + ", departmentId=" + departmentId
-				+ "]";
+		return "Department [id=" + id + ", name=" + name + ", location=" + location +"]";
 	}
 }
