@@ -28,7 +28,7 @@ private static final Logger log = LoggerFactory.getLogger(DepartmentService.clas
 
 	public Department getDepartmentById(Long deptId) {
 		log.info("Department Id "+deptId);
-		Department department = null;
+		Department department = new Department();
 		Optional<Department> optional = departmentRepo.findById(deptId);
 		if(optional.isPresent()) {
 			department = optional.get();
