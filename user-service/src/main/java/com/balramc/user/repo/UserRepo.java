@@ -1,13 +1,12 @@
 package com.balramc.user.repo;
 
+import com.balramc.user.entity.UserTable;
 import org.springframework.data.jpa.repository.JpaRepository;
-
-import com.balramc.user.entity.User;
 
 /**
  * @author balram
  *
  */
-public interface UserRepo extends JpaRepository<User, Long>{
+public interface UserRepo extends JpaRepository<UserTable, Long>{
 	
 }

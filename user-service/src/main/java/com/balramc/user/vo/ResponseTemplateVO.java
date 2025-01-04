@@ -1,26 +1,28 @@
 package com.balramc.user.vo;
 
-import com.balramc.user.entity.User;
+import com.balramc.user.entity.UserTable;
 
 /**
  * @author balram
- *
  */
 public class ResponseTemplateVO {
 
-	private User user;
-	private Department department;
-	
-	public User getUser() {
-		return user;
-	}
-	public void setUser(User user) {
-		this.user = user;
-	}
-	public Department getDepartment() {
-		return department;
-	}
-	public void setDepartment(Department department) {
-		this.department = department;
-	}
+    private UserTable user;
+    private Department department;
+
+    public UserTable getUser() {
+        return user;
+    }
+
+    public void setUser(UserTable user) {
+        this.user = user;
+    }
+
+    public Department getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
+    }
 }

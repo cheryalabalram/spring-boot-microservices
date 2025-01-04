@@ -7,15 +7,14 @@ import org.springframework.web.client.RestTemplate;
 
 /**
  * @author balram
- *
  */
 @Configuration
 public class UserServiceConfig {
 
-	@Bean
-	@LoadBalanced
-	public RestTemplate restTemplate() {
-		return new RestTemplate();
-	}
-	
+    @Bean
+    @LoadBalanced
+    public RestTemplate restTemplate() {
+        return new RestTemplate();
+    }
+
 }

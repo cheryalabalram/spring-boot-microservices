@@ -1,18 +1,12 @@
 package com.balramc.user.controller;
 
+import com.balramc.user.entity.UserTable;
+import com.balramc.user.service.UserService;
+import com.balramc.user.vo.ResponseTemplateVO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-import com.balramc.user.entity.User;
-import com.balramc.user.service.UserService;
-import com.balramc.user.vo.ResponseTemplateVO;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author balram
@@ -27,7 +21,7 @@ public class UserController {
 	private static final Logger log = LoggerFactory.getLogger(UserController.class);
 	
 	@PostMapping("/save")
-    public User saveUser(@RequestBody User user) {
+    public UserTable saveUser(@RequestBody UserTable user) {
         log.info("Inside saveUser of UserController");
         return userService.saveUser(user);
     }
@@ -38,6 +32,14 @@ public class UserController {
         return userService.getUserWithDepartment(userId);
     }
 
-	
-	
+    @GetMapping("/savedummy")
+    public void save(){
+        UserTable user = new UserTable();
+        user.setDepartmentId(1L);
+        user.setLocation("siddipet");
+        user.setName("balram");
+        user.setEmailId("example@email.com");
+        log.info("Inside dummy save of UserController");
+        userService.saveUser(user);
+    }
 }
