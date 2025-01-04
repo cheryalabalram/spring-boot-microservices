@@ -1,11 +1,7 @@
 package com.balramc.user.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+
+import jakarta.persistence.*;
 
 /**
  * @author balram
@@ -13,9 +9,11 @@ import javax.persistence.Table;
  */
 @Entity
 @Table
-public class User {
+public class UserTable {
 
-	@Id @GeneratedValue( strategy = GenerationType.AUTO) private Long id;
+	@Id
+	@GeneratedValue( strategy = GenerationType.IDENTITY)
+	private Long id;
 	@Column private String name;
 	@Column private String emailId;
 	@Column private String mobile;
