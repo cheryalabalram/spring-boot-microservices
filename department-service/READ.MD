@@ -1,0 +1,4 @@
+- https://zipkin.io/pages/quickstart
+- Download the jar file
+- java -jar zipkin.jar
+- Zipkin UI http://localhost:9411/zipkin

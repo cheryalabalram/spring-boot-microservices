@@ -1,13 +1,11 @@
 package com.balramc.department.repo;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-
 import com.balramc.department.entity.Department;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  * @author balram
- *
  */
-public interface DepartmentRepo extends JpaRepository<Department, Long>{
-	
+public interface DepartmentRepo extends JpaRepository<Department, Long> {
+
 }
