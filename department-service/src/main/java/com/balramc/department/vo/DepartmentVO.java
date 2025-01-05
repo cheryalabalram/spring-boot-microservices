@@ -1,25 +1,19 @@
-package com.balramc.department.entity;
+package com.balramc.department.vo;
 
 
-import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 /**
  * @author balram
  */
-@Entity
-@Table
 @Setter
 @Getter
-public class Department {
+public class DepartmentVO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+
     private Long id;
-    @Column
     private String name;
-    @Column
     private String location;
 
     @Override

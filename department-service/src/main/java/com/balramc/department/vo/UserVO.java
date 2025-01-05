@@ -1,31 +1,22 @@
-package com.balramc.user.entity;
+package com.balramc.department.vo;
 
 
-import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 /**
  * @author balram
  */
-@Setter
-@Getter
-@Entity
-@Table
-public class UserTable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+@Getter
+@Setter
+public class UserVO {
+
     private Long id;
-    @Column
     private String name;
-    @Column
     private String emailId;
-    @Column
     private String mobile;
-    @Column
     private String location;
-    @Column
     private Long departmentId;
 
     @Override
