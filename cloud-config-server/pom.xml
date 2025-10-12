@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.4.1</version>
+		<version>3.4.10</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.balramc</groupId>
@@ -15,8 +15,8 @@
 	<description>Central level configuration for all microservices</description>
 
 	<properties>
-		<java.version>17</java.version>
-		<spring-cloud.version>2024.0.0</spring-cloud.version>
+		<java.version>25</java.version>
+		<spring-cloud.version>2024.0.2</spring-cloud.version>
 	</properties>
 
 	<dependencies>
