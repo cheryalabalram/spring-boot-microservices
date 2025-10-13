@@ -40,3 +40,36 @@ management:
   tracing:
     sampling:
       probability: 1.0
+
+resilience4j:
+  circuitbreaker:
+    configs:
+      user-service-config:
+        #How many recent calls the circuit breaker looks at to decide if the service is healthy
+        slidingWindowSize: 10
+        #Minimum number of calls needed before it starts checking for failures
+        minimumNumberOfCalls: 5
+        #If this percentage of calls fail, the circuit opens (stops allowing calls through)
+        failureRateThreshold: 50
+        #How long the circuit stays open (blocking calls) before testing the service again
+        waitDurationInOpenState: 10s
+        #Number of test calls allowed when trying to see if the service has recovered.
+        permittedNumberOfCallsInHalfOpenState: 3
+        #If true, the system automatically starts testing the service again after the wait time.
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+        #You can see whether the circuit is OPEN, CLOSED, or HALF_OPEN
+        #By calling the standard Spring Boot actuator health endpoint: GET /actuator/health
+        registerHealthIndicator: true
+      department-service-config:
+        slidingWindowSize: 10
+        minimumNumberOfCalls: 5
+        failureRateThreshold: 50
+        waitDurationInOpenState: 10s
+        permittedNumberOfCallsInHalfOpenState: 3
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+        registerHealthIndicator: true
+    instances:
+      USER-SERVICE:
+        baseConfig: user-service-config
+      DEPARTMENT-SERVICE:
+        baseConfig: department-service-config
