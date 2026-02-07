@@ -2,6 +2,13 @@
 
 ### Reference Documentation
 
+### Java
+$env:PATH += ";C:\Users\username\.jdks\openjdk-25\bin"
+
+### Zipkin
+java -jar zipkin-server-3.5.1-exec.jar
+
+
 # API Calls!
   - POST : http://localhost:8080/users/save
     ```json 

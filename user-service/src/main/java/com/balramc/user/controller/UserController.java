@@ -2,6 +2,8 @@ package com.balramc.user.controller;
 
 import com.balramc.user.entity.UserTable;
 import com.balramc.user.service.UserService;
+import com.balramc.user.vo.Department;
+import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,12 +32,12 @@ public class UserController {
     }
 
     @GetMapping("/department/{departmentId}")
-    public List<UserTable> getUserByDepartmentId(@PathVariable("departmentId") Long departmentId) {
+    public Department getUserByDepartmentId(@PathVariable("departmentId") Long departmentId) {
         log.info("Inside getUserByDepartmentId of UserController");
-        return userService.getUserByDepartmentId(departmentId);
+        return userService.getDepartment(departmentId);
     }
 
-    @GetMapping("/savedummy")
+    @PostConstruct
     public void save() {
         UserTable user = new UserTable();
         user.setDepartmentId(1L);
