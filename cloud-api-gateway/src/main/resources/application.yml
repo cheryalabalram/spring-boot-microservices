@@ -8,33 +8,35 @@ spring:
 
   cloud:
     gateway:
-      routes:
-        - id: USER-SERVICE
-          uri: lb://USER-SERVICE
-          predicates:
-            - Path=/users/**
-          filters:
-            - name: CircuitBreaker
-              args:
-                name: USER-SERVICE
-                fallbackUri: forward:/userServiceFallBack
-            - name: Retry
-              args:
-                retries: 3
-                statuses: BAD_GATEWAY, GATEWAY_TIMEOUT, SERVICE_UNAVAILABLE
-                backoff:
-                  firstBackoff: 1s
-                  maxBackoff: 10s
-                  factor: 2
-        - id: DEPARTMENT-SERVICE
-          uri: lb://DEPARTMENT-SERVICE
-          predicates:
-            - Path=/departments/**
-          filters:
-            - name: CircuitBreaker
-              args:
-                name: DEPARTMENT-SERVICE
-                fallbackUri: forward:/departmentServiceFallBack
+      server:
+        webflux:
+          routes:
+            - id: USER-SERVICE
+              uri: lb://USER-SERVICE
+              predicates:
+                - Path=/users/**
+              filters:
+                - name: CircuitBreaker
+                  args:
+                    name: USER-SERVICE
+                    fallbackUri: forward:/userServiceFallBack
+                - name: Retry
+                  args:
+                    retries: 3
+                    statuses: BAD_GATEWAY, GATEWAY_TIMEOUT, SERVICE_UNAVAILABLE
+                    backoff:
+                      firstBackoff: 1s
+                      maxBackoff: 10s
+                      factor: 2
+            - id: DEPARTMENT-SERVICE
+              uri: lb://DEPARTMENT-SERVICE
+              predicates:
+                - Path=/departments/**
+              filters:
+                - name: CircuitBreaker
+                  args:
+                    name: DEPARTMENT-SERVICE
+                    fallbackUri: forward:/departmentServiceFallBack
 
 management:
   tracing:

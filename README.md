@@ -6,7 +6,7 @@
 $env:PATH += ";C:\Users\username\.jdks\openjdk-25\bin"
 
 ### Zipkin
-java -jar zipkin-server-3.5.1-exec.jar
+PS zipkin_path java -jar zipkin-server-3.5.1-exec.jar
 
 
 # API Calls!
@@ -42,19 +42,9 @@ java -jar zipkin-server-3.5.1-exec.jar
 ### OUTPUT
         
 ```json
-        {
-            "user": {
-                "id": 1,
-                "name": "balram",
-                "emailId": "balramc@example.com",
-                "mobile": "125412541254",
-                "location": "Hyderabad",
-                "departmentId": 1
-            },
-            "department": {
-                "id": 1,
-                "name": "IT",
-                "location": "Hyderabad"
-            }
-        }
+{
+  "id": 1,
+  "name": "HR",
+  "location": "HYD"
+}
 ```
